@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.server.authorization.client.InMemoryR
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
+import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.security.KeyPair;
@@ -26,6 +27,7 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.time.Duration;
 import java.util.UUID;
 
 /**
@@ -100,6 +102,21 @@ public class AuthorizationServerConfiguration {
         // @formatter:off
         return ProviderSettings.builder()
                 .issuer("http://localhost:9000")
+                .build();
+        // @formatter:on
+    }
+
+
+    /**
+     *  token 设置
+     * @return
+     */
+    @Bean
+    public TokenSettings tokenSettings() {
+        //@formatter:off
+        return TokenSettings.builder()
+                // 访问令牌有效期,此处为半小时
+                .accessTokenTimeToLive(Duration.ofMinutes(30L))
                 .build();
         // @formatter:on
     }
