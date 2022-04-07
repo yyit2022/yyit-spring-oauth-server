@@ -25,7 +25,7 @@ public class SpringSecurityConfiguration {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorizeRequests ->
-                        authorizeRequests.antMatchers("/oauth/**").permitAll().anyRequest().authenticated()
+                        authorizeRequests.anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults());
 
