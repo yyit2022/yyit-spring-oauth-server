@@ -7,12 +7,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
 /**
  * <p>
- *    spring security 配置
+ * spring security 配置
  * </p>
  *
  * @author yyit
@@ -27,21 +30,31 @@ public class SpringSecurityConfiguration {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests.anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .oauth2ResourceServer()
+                .jwt();
 
         return http.build();
     }
 
 
     @Bean
-    public UserDetailsService users() {
-        UserDetails user = User.withDefaultPasswordEncoder()
+    public UserDetailsService users(PasswordEncoder encoder) {
+        UserDetails user = User.builder()
+                .authorities(List.of())
                 .username("admin")
-                .password("password")
+                .password(encoder.encode("password"))
                 .roles("ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user1 = User.builder()
+                .authorities(List.of())
+                .username("user")
+                .password(encoder.encode("123"))
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user, user1);
     }
 
 }
