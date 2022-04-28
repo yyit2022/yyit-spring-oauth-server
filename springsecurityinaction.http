@@ -1,0 +1,8 @@
+POST http://localhost:9000/oauth2/token
+Authorization: Basic eXlpdGphdmExOjEyMw==
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+
+###
+

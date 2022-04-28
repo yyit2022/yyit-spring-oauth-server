@@ -61,7 +61,18 @@ public class AuthorizationServerConfiguration {
                 .scope(OidcScopes.OPENID)
                 .build();
 
-        return new InMemoryRegisteredClientRepository(registeredClient);
+        RegisteredClient registeredClient1 = RegisteredClient.withId(UUID.randomUUID().toString())
+                .clientId("yyitjava1")
+                .clientSecret("{noop}123")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .tokenSettings(tokenSettings())
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .scope("access-hello")
+                .build();
+
+        return new InMemoryRegisteredClientRepository(registeredClient,registeredClient1);
     }
 
 
