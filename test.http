@@ -2,7 +2,7 @@
 POST http://localhost:9000/oauth2/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&code=rogDSJsUYwR0dhva66Q2twWWB3E8nyh8dQS8vPHw2qPx6usAd4eq76PeTp3_OQpQ-D1JDzEIiZVFEGsjQN1jSRNTMnxZKLRyqKD8oh0UxzXmIPEfuPU3R8sepVQps1IW&client_id=yyit&client_secret=123456&redirect_uri=https%3A%2F%2Foidcdebugger.com%2Fdebug
+grant_type=authorization_code&code=5bLQu_s_fNOr4z566zx4d5MnGMu-Ytbp3u0_nvuwXY9295-l9_KlvpIEIeM-VwiNviTVSfwCMuIPvyG23JxZWx4WqRxvhykbcVkaX1DEIZfvVCPgIF3t254YKJyzMW68&client_id=yyit&client_secret=123456&redirect_uri=https%3A%2F%2Foidcdebugger.com%2Fdebug
 
 ###
 
