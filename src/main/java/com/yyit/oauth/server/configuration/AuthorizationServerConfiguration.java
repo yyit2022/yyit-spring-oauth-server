@@ -57,7 +57,9 @@ public class AuthorizationServerConfiguration {
                 .clientSecret("{noop}123456")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                // unavailable
                 .redirectUri("https://oidcdebugger.com/debug")
+                .redirectUri("https://www.baidu.com")
                 .scope(OidcScopes.OPENID)
                 .build();
 
