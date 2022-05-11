@@ -26,7 +26,7 @@ public class PasswordEncoderConfiguration {
     @Bean
     public static PasswordEncoder encoder() {
         var defaultEncoder = "bcrypt";
-        Map<String, PasswordEncoder> encoders = new HashMap<>();
+        Map<String, PasswordEncoder> encoders = new HashMap<>(11);
         encoders.put( "bcrypt", new BCryptPasswordEncoder() );
         encoders.put( "scrypt", new SCryptPasswordEncoder() );
         encoders.put( "argon2", new Argon2PasswordEncoder() );
